@@ -1,18 +1,23 @@
 import React from 'react';
 import { LeftArrow } from '../components/icons/LeftArrow';
+import {useHistory} from "react-router";
 
 type Props = {
 
 }
 
 export const Login = (props: Props) => {
+  const history = useHistory()
+
+  const toVerification = () => history.push('/code-verification')
+
   return (
     <div className="page login-page">
       <div className="navigation qr-code-navigation">
         <LeftArrow/>
         <a className="settings-link navigation-link">SETTINGS</a>
       </div>
-      <form className="login-form">
+      <form className="login-form" onSubmit={toVerification}>
         <div className="form-title">Your Phone Number</div>
         <p className="phone-caption">
           Please confirm your country code and<br/>
@@ -22,7 +27,9 @@ export const Login = (props: Props) => {
           <input type="text" className="clear-input form-input phone-input"/>
           <div className="input-line"/>
         </div>
-        <div className="btn btn-primary login-form-btn">
+        <div
+          className="btn btn-primary login-form-btn"
+          onClick={toVerification}>
           NEXT
         </div>
       </form>

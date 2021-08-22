@@ -230,9 +230,10 @@ a {
 .page {
     height: 100vh;
     background: #17212B;
+    padding: 0 20px;
 }
 
-.start-page {
+.page.start-page {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -242,6 +243,7 @@ a {
     flex-direction: column;
     height: 100vh;
     width: 100vw;
+    padding: 0;
 }
 
 .start-image {
@@ -349,7 +351,6 @@ a {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    padding: 0 20px;
 }
 
 .phone-caption {
