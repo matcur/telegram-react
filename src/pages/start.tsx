@@ -1,7 +1,7 @@
 import React from 'react'
-import leftPart from '../images/start/start-left-part.png'
-import rightPart from '../images/start/start-right-part.png'
-import airplane from '../images/start/start-airplane.png'
+import leftPart from '../public/images/start/start-left-part.png'
+import rightPart from '../public/images/start/start-right-part.png'
+import airplane from '../public/images/start/start-airplane.png'
 import {Link} from "react-router-dom";
 
 type Props = {}
