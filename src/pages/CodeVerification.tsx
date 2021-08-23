@@ -1,5 +1,5 @@
 import React from 'react'
-import {LeftArrow} from "../components/icons/LeftArrow";
+import {LeftArrowIcon} from "../components/icons/LeftArrowIcon";
 
 type Props = {
 
@@ -9,7 +9,7 @@ export const CodeVerification = (props: Props) => {
   return (
     <div className="page code-verification">
       <div className="navigation">
-        <LeftArrow/>
+        <LeftArrowIcon/>
         <a className="settings-link navigation-link">SETTINGS</a>
       </div>
       <form className="login-form">

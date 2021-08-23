@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import {Start} from "./pages/Start";
 import {Login} from "./pages/Login";
 import {CodeVerification} from "./pages/CodeVerification";
-import {Index} from "./pages";
+import {Index} from "./pages/Index";
 
 function App() {
   return (

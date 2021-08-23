@@ -4,7 +4,7 @@ type Props = {
 
 }
 
-export const LeftArrow = (props: Props) => {
+export const LeftArrowIcon = (props: Props) => {
   return (
     <svg className="arrow left-arrow icon" version="1.1" id="Capa_1"
                viewBox="0 0 512 512">

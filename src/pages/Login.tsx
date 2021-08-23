@@ -1,5 +1,5 @@
 import React from 'react';
-import { LeftArrow } from '../components/icons/LeftArrow';
+import { LeftArrowIcon } from '../components/icons/LeftArrowIcon';
 import {useHistory} from "react-router";
 
 type Props = {
@@ -14,7 +14,7 @@ export const Login = (props: Props) => {
   return (
     <div className="page login-page">
       <div className="navigation qr-code-navigation">
-        <LeftArrow/>
+        <LeftArrowIcon/>
         <a className="settings-link navigation-link">SETTINGS</a>
       </div>
       <form className="login-form" onSubmit={toVerification}>

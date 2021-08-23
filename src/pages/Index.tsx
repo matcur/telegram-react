@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {UpLayer} from "../components/UpLayer";
-import {LeftMenu} from "../components/menus/LeftMenu";
+import {LeftMenu} from "../components/menus/left-menu";
 import {ChatsBlock} from "../components/chat/ChatsBlock";
 import {Chat} from "../components/chat/Chat";
 import {nullChat} from "../nullables";
