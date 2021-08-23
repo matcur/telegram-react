@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Chat, Message} from "../../models";
-import {nullChat, nullMessage} from "../../nullables";
-import {removeFrom} from "../../utils/removeFrom";
-import {RootState} from "../store";
+import {Chat, Message} from "models";
+import {nullChat} from "nullables";
+import {removeFrom} from "utils/removeFrom";
+import {RootState} from "app/store";
 
 type State = {
   list: Chat[]

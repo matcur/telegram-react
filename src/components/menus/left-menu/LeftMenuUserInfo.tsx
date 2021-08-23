@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import cat from "../../../public/images/index/cat-3.jpg";
+import cat from "public/images/index/cat-3.jpg";
 
 type Props = {
 

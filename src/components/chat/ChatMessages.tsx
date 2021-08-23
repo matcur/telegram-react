@@ -1,8 +1,8 @@
 import React, {FC} from 'react'
-import {Message} from "../../models";
-import {useAppSelector} from "../../app/hooks";
+import {Message} from "models";
+import {useAppSelector} from "app/hooks";
 import {ChatMessage} from "./ChatMessage";
-import {nullMessage} from "../../nullables";
+import {nullMessage} from "nullables";
 
 type Props = {
   messages: Message[]

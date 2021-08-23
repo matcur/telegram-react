@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
-import {Chat} from "../../models";
-import {splitByThousands} from "../../utils/splitByThousands";
+import {Chat} from "models";
+import {splitByThousands} from "utils/splitByThousands";
 
 type Props = {
   chat: Chat

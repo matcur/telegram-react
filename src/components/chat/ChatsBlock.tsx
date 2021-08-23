@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react'
 import {ChatSearch} from "./ChatSearch";
 import {ChatList} from "./ChatList";
-import {Chat} from "../../models";
+import {Chat} from "models";
 
 type Props = {
   onChatSelected: (chat: Chat) => void

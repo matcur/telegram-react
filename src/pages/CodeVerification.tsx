@@ -1,5 +1,5 @@
 import React from 'react'
-import {LeftArrowIcon} from "../components/icons/LeftArrowIcon";
+import {LeftArrowIcon} from "components/icons/LeftArrowIcon";
 
 type Props = {
 

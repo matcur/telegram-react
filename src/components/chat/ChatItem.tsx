@@ -1,8 +1,8 @@
 import React, {FC} from 'react'
-import cat from "../../public/images/index/cat-3.jpg";
-import {Chat} from "../../models";
-import {lastIn} from "../../utils/lastIn";
-import {nullMessage} from "../../nullables";
+import cat from "public/images/index/cat-3.jpg";
+import {Chat} from "models";
+import {lastIn} from "utils/lastIn";
+import {nullMessage} from "nullables";
 
 type Props = {
   chat: Chat

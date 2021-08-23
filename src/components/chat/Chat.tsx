@@ -1,11 +1,11 @@
 import React, {FC, useEffect, useState} from 'react'
-import {MessageInput} from "../message/MessageInput";
-import {ChatMessages} from "./ChatMessages";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {Chat as ChatModel} from "../../models";
-import {addMessages, chatMessages} from "../../app/slices/chatsSlice";
+import {MessageInput} from "components/message/MessageInput";
+import {ChatMessages} from "components/chat/ChatMessages";
+import {useAppDispatch, useAppSelector} from "app/hooks";
+import {Chat as ChatModel} from "models";
+import {addMessages, chatMessages} from "app/slices/chatsSlice";
 import {LoadingChat} from "./LoadingChat";
-import {nullChat, nullMessage} from "../../nullables";
+import {nullMessage} from "nullables";
 
 type Props = {
   chat: ChatModel

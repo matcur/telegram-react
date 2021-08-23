@@ -1,6 +1,5 @@
-import {nullUser} from "../nullables";
 import {isSame} from "./isSame";
-import {User} from "../models";
+import {User} from "models";
 
 const classes = {
   single: '',

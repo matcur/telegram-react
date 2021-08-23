@@ -1,8 +1,8 @@
 import React, {FC, useEffect} from 'react'
-import {Chat} from "../../models";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {Chat} from "models";
+import {useAppDispatch, useAppSelector} from "app/hooks";
 import { ChatItem } from './ChatItem';
-import {addChatRange} from "../../app/slices/chatsSlice";
+import {addChatRange} from "app/slices/chatsSlice";
 
 type Props = {
   selectedChat: Chat

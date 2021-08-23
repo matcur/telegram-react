@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
-import {Message, User} from "../../models";
-import {inRowPositionClass} from "../../utils/inRowPositionClass";
+import {Message, User} from "models";
+import {inRowPositionClass} from "utils/inRowPositionClass";
 
 type Props = {
   previousAuthor: User

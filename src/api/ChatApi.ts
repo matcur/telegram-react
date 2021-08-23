@@ -1,5 +1,5 @@
 import {ApiClient} from "./ApiClient";
-import {Message} from "../models";
+import {Message} from "models";
 
 export class ChatApi {
   private readonly id: number

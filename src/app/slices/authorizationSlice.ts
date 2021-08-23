@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {User} from "../../models";
-import {nullUser} from "../../nullables";
+import {User} from "models";
+import {nullUser} from "nullables";
 
 type State = {
   currentUser: User
