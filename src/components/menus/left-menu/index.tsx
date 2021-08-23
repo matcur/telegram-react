@@ -1,5 +1,4 @@
 import React from 'react'
-import cat from "../../../public/images/index/cat-3.jpg";
 import {LeftMenuUserInfo} from "./LeftMenuUserInfo";
 import {Item, LeftMenuItem} from "./LeftMenuItem";
 import {PeopleIcon} from "../../icons/PeopleIcon";
@@ -22,6 +21,7 @@ export const LeftMenu = (props: Props) => {
     {name: 'Settings', icon: <GearIcon/>},
     {name: 'Night Mode', icon: <MoonIcon/>, additionalElement: <GearIcon/>},
   ]
+  React.createElement('div')
 
   return (
     <div className="left-menu">
