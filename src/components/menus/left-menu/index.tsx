@@ -20,7 +20,7 @@ export const LeftMenu = (props: Props) => {
     {name: 'Contacts', icon: <PersonIcon/>},
     {name: 'Calls', icon: <PhoneIcon/>},
     {name: 'Settings', icon: <GearIcon/>},
-    {name: 'Night Mode', icon: <MoonIcon/>},
+    {name: 'Night Mode', icon: <MoonIcon/>, additionalElement: <GearIcon/>},
   ]
 
   return (
