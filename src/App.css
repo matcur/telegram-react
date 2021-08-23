@@ -375,7 +375,7 @@ a {
     margin-top: 80px;
 }
 
-.app {
+.index {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -564,7 +564,7 @@ a {
     background-color: rgba(255, 255, 255, 0.35);
 }
 
-.chat-list {
+.chats-block {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -574,11 +574,16 @@ a {
     flex-direction: column;
     position: relative;
     max-height: 100vh;
+    min-width: 350px;
     border-right: 1px solid #0F1820;
 }
 
 .chat-action-icon path {
     fill: #727E8A;
+}
+
+.chat-icon-hover {
+    cursor: pointer;
 }
 
 .chat-icon-hover:hover path {
@@ -654,13 +659,17 @@ a {
     height: 80%;
 }
 
-.chat-body {
+.chat-messages {
     -webkit-box-flex: 2;
     -ms-flex: 2;
     flex: 2;
     padding: 0 15px;
     overflow-y: scroll;
     background: #0E1621;
+}
+
+.current-user-message .message-author-avatar {
+    display: none;
 }
 
 .message {
@@ -746,7 +755,7 @@ a {
     cursor: pointer;
 }
 
-.chat-footer {
+.message-form {
     height: 50px;
     display: -webkit-box;
     display: -ms-flexbox;
