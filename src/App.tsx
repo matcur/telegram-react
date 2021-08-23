@@ -3,9 +3,9 @@ import './App.css';
 import {BrowserRouter} from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import {Start} from "./pages/start";
-import {Login} from "./pages/login";
-import {CodeVerification} from "./pages/codeVerification";
+import {Start} from "./pages/Start";
+import {Login} from "./pages/Login";
+import {CodeVerification} from "./pages/CodeVerification";
 import {Index} from "./pages";
 
 function App() {
