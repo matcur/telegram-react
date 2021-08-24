@@ -6,6 +6,7 @@ import {Chat as ChatModel} from "models";
 import {addMessages, chatMessages} from "app/slices/chatsSlice";
 import {LoadingChat} from "./LoadingChat";
 import {nullMessage} from "nullables";
+import {ChatHeader} from "components/chat/ChatHeader";
 
 type Props = {
   chat: ChatModel
@@ -30,11 +31,11 @@ export const Chat: FC<Props> = ({chat}: Props) => {
     }
 
     load()
-    debugger
   }, [chat])
 
   return (
     <div className="chat">
+      <ChatHeader chat={chat}/>
       {
         loaded? (<>
           <ChatMessages messages={messages}/>

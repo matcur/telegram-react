@@ -1,12 +1,12 @@
 import React from 'react'
 import {LeftMenuUserInfo} from "./LeftMenuUserInfo";
 import {Item, LeftMenuItem} from "./LeftMenuItem";
-import {PeopleIcon} from "components/icons/PeopleIcon";
-import {SpeakerIcon} from "components/icons/SpeakerIcon";
-import {PhoneIcon} from "components/icons/PhoneIcon";
-import {PersonIcon} from "components/icons/PersonIcon";
-import {GearIcon} from "components/icons/GearIcon";
-import {MoonIcon} from "components/icons/MoonIcon";
+import {ReactComponent as PeopleIcon} from "public/svgs/people.svg";
+import {ReactComponent as SpeakerIcon} from "public/svgs/speacker.svg";
+import {ReactComponent as PhoneIcon} from "public/svgs/phone.svg";
+import {ReactComponent as PersonIcon} from "public/svgs/person.svg";
+import {ReactComponent as GearIcon} from "public/svgs/gear.svg";
+import {ReactComponent as MoonIcon} from "public/svgs/moon.svg";
 
 type Props = {
 

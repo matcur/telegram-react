@@ -1,5 +1,5 @@
 import React from 'react';
-import { LeftArrowIcon } from 'components/icons/LeftArrowIcon';
+import {ReactComponent as LeftArrowIcon} from 'public/svgs/left-arrow.svg';
 import {useHistory} from "react-router";
 
 type Props = {
