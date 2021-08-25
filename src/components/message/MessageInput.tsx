@@ -17,6 +17,7 @@ type Form = {
 
 export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
   const {register, handleSubmit} = useForm<Form>()
+  const [textContent, setTextContent] = useState('')
   const form = createRef<HTMLFormElement>()
 
   const onSubmit = (data: Form) => {
@@ -27,6 +28,7 @@ export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
     seedForm(form, data, content, files);
 
     onSubmitting(form, content)
+    setTextContent('')
   }
 
   function seedForm(form: FormData, data: Form, content: Content[], files: FileList) {
@@ -55,6 +57,8 @@ export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
         type="text"
         className="clear-input message-input"
         placeholder="Write a message..."
+        onInput={e => setTextContent(e.currentTarget.value)}
+        value={textContent}
         {...register('textContent', {required: true, minLength: 1})}/>
       <Command/>
       <Smile/>
