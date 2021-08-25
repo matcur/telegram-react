@@ -1,6 +1,8 @@
 import React, {FC} from 'react'
 import {Message, User} from "models";
 import {inRowPositionClass} from "utils/inRowPositionClass";
+import {DetailMessageContent} from "components/message/DetailMessageContent";
+import cat from "public/images/index/cat-3.jpg"
 
 type Props = {
   previousAuthor: User
@@ -13,19 +15,12 @@ export const ChatMessage: FC<Props> = ({previousAuthor, message, nextAuthor}: Pr
 
   return (
     <div className={"message " + inRowPositionClass(previousAuthor, message.author, nextAuthor)}>
-      <img src={currentAuthor.avatarUrl} alt="" className="circle message-author-avatar"/>
+      <img src={cat} /** {currentAuthor.avatarUrl} **/ alt="" className="circle message-author-avatar"/>
       <div className="message-wrapper">
         <div className="message-triangle"/>
         <span className="message-reply">Reply</span>
         <span className="message-author">{currentAuthor.firstName + " " + currentAuthor.lastName}</span>
-        <div className="message-content">
-          <span className="message-text">
-            {message.content}
-          </span>
-          <div className="message-created-at">
-            {message.creationDate}
-          </div>
-        </div>
+        <DetailMessageContent message={message}/>
       </div>
     </div>
   )

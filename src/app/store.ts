@@ -6,7 +6,11 @@ const reducers = combineReducers({
   authorization: authorizationReducer,
   chats: chatsReducer,
 })
-export const store = createStore(reducers);
+export const store = createStore(
+  reducers,
+  // @ts-ignore
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

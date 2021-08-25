@@ -4,6 +4,7 @@ import {Chat} from "models";
 import {lastIn} from "utils/lastIn";
 import {nullMessage} from "nullables";
 import {ReactComponent as Community} from "public/svgs/community.svg";
+import {ShortMessageContent} from "components/message/ShortMessageContent";
 
 type Props = {
   chat: Chat
@@ -25,8 +26,8 @@ export const ChatItem: FC<Props> = ({chat, className = '', onClick}: Props) => {
           <span>{chat.name}</span>
         </div>
         <div className="last-message">
-          <span className="last-message-user-name">{lastMessage.author.firstName}</span>
-          <span className="last-message-content">{lastMessage.content}</span>
+          <span className="last-message-user-name">{lastMessage.author.firstName}: </span>
+          <ShortMessageContent content={lastMessage.content}/>
         </div>
       </div>
       <div className="chat-item-right-part">

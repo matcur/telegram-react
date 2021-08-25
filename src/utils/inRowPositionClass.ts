@@ -1,8 +1,8 @@
-import {isSame} from "./isSame";
+import {same} from "utils/same";
 import {User} from "models";
 
 const classes = {
-  single: '',
+  single: 'single-message',
   first: 'first-in-row-user-message',
   previous: 'previous-in-row-user-message',
   last: 'last-in-row-user-message',
@@ -11,16 +11,15 @@ const classes = {
 const sameUsers = (a: User, b: User) => a.id === b.id
 
 /**
- *
- * 1 item return 'single'
- *
+ * Defines element class for message in chat,
+ * dependents on sibling message authors
  */
 export const inRowPositionClass = (previous: User, current: User, next: User) => {
   if (!sameUsers(previous, current) && !sameUsers(current, next)) {
     return classes.single
   }
 
-  if (isSame([previous, current, next], sameUsers)) {
+  if (same([previous, current, next], sameUsers)) {
     return classes.previous
   }
 

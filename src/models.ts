@@ -6,10 +6,16 @@ export type User = {
   avatarUrl: string
 }
 
+export type Content = {
+  type: 'Text' | 'Image'
+  value: string
+  displayOrder: number
+}
+
 export type Message = {
   id: number
   author: User
-  content: string
+  content: Content[]
   chatId: number
   creationDate: string
 }

@@ -21,13 +21,12 @@ export const LeftMenu = (props: Props) => {
     {name: 'Settings', icon: <GearIcon/>},
     {name: 'Night Mode', icon: <MoonIcon/>, additionalElement: <GearIcon/>},
   ]
-  React.createElement('div')
 
   return (
     <div className="left-menu">
       <LeftMenuUserInfo/>
       <div className="left-menu-options">
-        {items.map(i => <LeftMenuItem item={i}/>)}
+        {items.map((i, key) => <LeftMenuItem key={key} item={i}/>)}
       </div>
       <div className="left-menu-app-info">
         <strong>Telegram Desktop</strong>
