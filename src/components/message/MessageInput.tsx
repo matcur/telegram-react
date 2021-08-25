@@ -1,4 +1,4 @@
-import React, {createRef, FC} from 'react'
+import React, {createRef, FC, useState} from 'react'
 import {ReactComponent as PaperClip} from 'public/svgs/paperclip.svg'
 import {ReactComponent as Command} from 'public/svgs/command.svg'
 import {ReactComponent as Smile} from 'public/svgs/smile.svg'
@@ -24,17 +24,21 @@ export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
     const form = new FormData()
     const content: Content[] = []
 
+    seedForm(form, data, content, files);
+
+    onSubmitting(form, content)
+  }
+
+  function seedForm(form: FormData, data: Form, content: Content[], files: FileList) {
     form.append('content[0].type', 'Text')
     form.append('content[0].value', data.textContent)
     content.push({type: 'Text', value: data.textContent, displayOrder: 1000})
     for (let i = 0; i < files.length; i++) {
-      form.append(`content[${i+1}].type`, 'Image')
-      form.append(`content[${i+1}].value`, files[i])
+      form.append(`content[${i + 1}].type`, 'Image')
+      form.append(`content[${i + 1}].value`, files[i])
       // make input with auto load files
       content.push({type: 'Image', value: '', displayOrder: 10000})
     }
-
-    onSubmitting(form, content)
   }
 
   return (
