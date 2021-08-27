@@ -1,5 +1,6 @@
 import {same} from "utils/same";
 import {User} from "models";
+import {sameUsers} from "utils/sameUsers";
 
 const classes = {
   single: 'single-message',
@@ -7,8 +8,6 @@ const classes = {
   previous: 'previous-in-row-user-message',
   last: 'last-in-row-user-message',
 }
-
-const sameUsers = (a: User, b: User) => a.id === b.id
 
 /**
  * Defines element class for message in chat,

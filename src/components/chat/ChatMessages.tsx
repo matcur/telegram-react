@@ -3,6 +3,8 @@ import {Message} from "models";
 import {useAppSelector} from "app/hooks";
 import {ChatMessage} from "./ChatMessage";
 import {nullMessage} from "nullables";
+import {sameUsers} from "utils/sameUsers";
+import {lastIn} from "utils/lastIn";
 
 type Props = {
   messages: Message[]
@@ -27,11 +29,19 @@ export const ChatMessages: FC<Props> = ({messages}: Props) => {
 
   useEffect(() => {
     const scrollBar = scrollBarRef.current
-    if (scrollBar !== null) {
-      const height = scrollBar.scrollHeight
+    if (scrollBar === null) {
+      return
+    }
+
+    const height = scrollBar.scrollHeight
+    const actualOffset = scrollBar.scrollTop + scrollBar.offsetTop + scrollBar.clientHeight
+    if (
+      actualOffset + 60 > height ||
+      sameUsers(currentUser, lastIn(messages, nullMessage).author)
+    ) {
       scrollBar.scrollTo({top: height})
     }
-  }, [])
+  }, [messages])
 
   return (
     <div
