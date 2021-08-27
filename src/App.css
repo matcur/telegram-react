@@ -993,4 +993,11 @@ input:checked + .fuck:before {
     transform: rotate(-45deg);
     border-right: 7px solid #2B5278;
 }
+
+.invalid-phone-number {
+    padding: 14px;
+    font-size: 12px;
+    color: #727E8A;
+    text-align: center;
+}
 /*# sourceMappingURL=style.css.map */

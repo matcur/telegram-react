@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ReactComponent as LeftArrowIcon} from 'public/svgs/left-arrow.svg';
 import {useHistory} from "react-router";
+import {isValidPhone} from "utils/isValidPhone";
 
 type Props = {
 
@@ -8,8 +9,20 @@ type Props = {
 
 export const Login = (props: Props) => {
   const history = useHistory()
+  const [phone, setPhone] = useState('')
+  const [invalidPhoneMessage, setInvalidPhoneMessage] = useState('')
 
-  const toVerification = () => history.push('/code-verification')
+  const toVerification = () => {
+    if (isValidPhone(phone)) {
+      history.push('/code-verification')
+    } else {
+      setInvalidPhoneMessage('Invalid phone number. Try again.')
+    }
+  }
+  const onPhoneInput = (number: string) => {
+    setPhone(number)
+    setInvalidPhoneMessage('')
+  }
 
   return (
     <div className="page login-page">
@@ -24,9 +37,13 @@ export const Login = (props: Props) => {
           enter your mobile phone number.
         </p>
         <div className="form-group login-phone-group">
-          <input type="text" className="clear-input form-input phone-input"/>
+          <input
+            value={phone}
+            onInput={e => onPhoneInput(e.currentTarget.value)}
+            className="clear-input form-input phone-input"/>
           <div className="input-line"/>
         </div>
+        <div className="invalid-phone-number">{invalidPhoneMessage}</div>
         <div
           className="btn btn-primary login-form-btn"
           onClick={toVerification}>
