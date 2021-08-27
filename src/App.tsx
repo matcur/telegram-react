@@ -3,10 +3,11 @@ import './App.css';
 import {BrowserRouter} from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import {Start} from "./pages/Start";
-import {Login} from "./pages/Login";
-import {CodeVerification} from "./pages/CodeVerification";
-import {Index} from "./pages/Index";
+import {Start} from "pages/Start";
+import {Login} from "pages/Login";
+import {Index} from "pages/Index";
+import {NewUserCodeVerification} from "pages/NewUserCodeVerification";
+import {RegisteredUserCodeVerification} from "pages/RegisteredUserCodeVerification";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Switch>
           <Route exact path="/start" component={Start}/>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/code-verification" component={CodeVerification}/>
+          <Route exact path="/new-user-code-verification" component={NewUserCodeVerification}/>
+          <Route exact path="/registered-user-code-verification" component={RegisteredUserCodeVerification}/>
           <Route exact path="/" component={Index}/>
         </Switch>
       </BrowserRouter>

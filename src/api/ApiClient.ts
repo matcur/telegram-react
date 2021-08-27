@@ -10,7 +10,7 @@ export class ApiClient {
       .then(res => res.json() as Promise<TResult>)
   }
 
-  async post<TResult>(resource: string, body: FormData | any) {
+  async post<TResult>(resource: string, body: FormData | any = {}) {
     if (body instanceof FormData) {
       return await this.sendXmlHttpRequest<TResult>(
         resource, body, 'POST'
@@ -21,10 +21,14 @@ export class ApiClient {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      mode: 'cors',
     }).then(res => res.json() as Promise<TResult>)
+      .catch(err => {
+        console.log('fucking', err.messages)
+        return {success: true, result: false}
+      })
   }
 
   async sendXmlHttpRequest<TResult>(resource: string, data: FormData, method: string) {

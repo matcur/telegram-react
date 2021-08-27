@@ -4,6 +4,7 @@ export type User = {
   lastName: string
   chats: Chat[]
   avatarUrl: string
+  phone?: Phone
 }
 
 export type Content = {
@@ -25,4 +26,9 @@ export type Chat = {
   name: string
   messages: Message[]
   members: User[]
+}
+
+export type Phone = {
+  ownerId: number,
+  number: string
 }

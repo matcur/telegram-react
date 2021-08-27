@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ReactComponent as LeftArrowIcon} from 'public/svgs/left-arrow.svg';
 import {useHistory} from "react-router";
 import {isValidPhone} from "utils/isValidPhone";
+import {PhonesApi} from "api/PhonesApi";
 
 type Props = {
 
@@ -9,18 +10,23 @@ type Props = {
 
 export const Login = (props: Props) => {
   const history = useHistory()
-  const [phone, setPhone] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('89545672654')
   const [invalidPhoneMessage, setInvalidPhoneMessage] = useState('')
 
-  const toVerification = () => {
-    if (isValidPhone(phone)) {
-      history.push('/code-verification')
+  const toVerification = async () => {
+    if (isValidPhone(phoneNumber)) {
+      const response = await new PhonesApi().find(phoneNumber)
+      if (response.success) {
+        history.push(`/registered-user-code-verification?number=${response.result.number}`)
+      } else {
+        history.push(`/new-user-code-verification?number=${phoneNumber}`)
+      }
     } else {
       setInvalidPhoneMessage('Invalid phone number. Try again.')
     }
   }
   const onPhoneInput = (number: string) => {
-    setPhone(number)
+    setPhoneNumber(number)
     setInvalidPhoneMessage('')
   }
 
@@ -38,7 +44,7 @@ export const Login = (props: Props) => {
         </p>
         <div className="form-group login-phone-group">
           <input
-            value={phone}
+            value={phoneNumber}
             onInput={e => onPhoneInput(e.currentTarget.value)}
             className="clear-input form-input phone-input"/>
           <div className="input-line"/>

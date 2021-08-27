@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
 import {ReactComponent as LeftArrowIcon} from "public/svgs/left-arrow.svg";
 
 type Props = {
-
+  title: ReactElement
+  number: string
 }
 
-export const CodeVerification = (props: Props) => {
+export const BaseCodeVerification = ({title, number}: Props) => {
   return (
     <div className="page code-verification">
       <div className="navigation">
@@ -13,10 +14,9 @@ export const CodeVerification = (props: Props) => {
         <a className="settings-link navigation-link">SETTINGS</a>
       </div>
       <form className="login-form">
-        <div className="form-title">+7 434 123 43 34</div>
+        <div className="form-title">{number}</div>
         <p className="phone-caption">
-          A code was sent <strong>via Telegram</strong> to your other<br/>
-          devices, if you have any connected.
+          {title}
         </p>
         <div className="form-group code-verification-group">
           <label htmlFor="code" className="input-label">Code</label>
