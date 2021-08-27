@@ -21,7 +21,7 @@ let mess3 = {...baseMessage, content: [{type: 'Text', value: 'Some text 3', disp
 const initialState = {list: [
     {id: 1, name: 'React', messages: [mess2, {...mess1, author: {id: 4, firstName: 'Jon 2', lastName: 'Yon 2', chats: [], avatarUrl: ''}}, mess1, mess2], members: []},
     {id: 2, name: 'Typescript', messages: [mess2, mess3], members: []},
-    {id: 3, name: 'Vue', messages: [mess3, mess1, mess2], members: []},
+    {id: 3, name: 'Vue', messages: [mess3, mess1, mess2, mess1, mess2, mess1, mess2, mess1, mess2, mess1, mess2, mess1, mess2], members: []},
   ]} as State
 
 const newMessage = (message: Omit<Message, 'id' | 'creationDate'>, messages: Message[]) => {

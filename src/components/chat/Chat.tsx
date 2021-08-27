@@ -47,8 +47,7 @@ export const Chat: FC<Props> = ({chat}: Props) => {
   }, [chat])
 
   return (
-    <div
-      className="chat">
+    <div className="chat">
       <ChatHeader chat={chat}/>
       {
         loaded? (<>

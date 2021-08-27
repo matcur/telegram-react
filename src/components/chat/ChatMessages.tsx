@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {createRef, FC, useEffect} from 'react'
 import {Message} from "models";
 import {useAppSelector} from "app/hooks";
 import {ChatMessage} from "./ChatMessage";
@@ -10,6 +10,7 @@ type Props = {
 
 export const ChatMessages: FC<Props> = ({messages}: Props) => {
   const currentUser = useAppSelector(state => state.authorization.currentUser)
+  const scrollBarRef = createRef<HTMLDivElement>()
 
   const makeMessages = (messages: Message[]) => {
     return messages.map((message, i) => {
@@ -24,8 +25,18 @@ export const ChatMessages: FC<Props> = ({messages}: Props) => {
     })
   }
 
+  useEffect(() => {
+    const scrollBar = scrollBarRef.current
+    if (scrollBar !== null) {
+      const height = scrollBar.scrollHeight
+      scrollBar.scrollTo({top: height})
+    }
+  }, [])
+
   return (
-    <div className="chat-messages scrollbar">
+    <div
+      ref={scrollBarRef}
+      className="chat-messages scrollbar">
       {makeMessages(messages)}
     </div>
   )
