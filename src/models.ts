@@ -29,6 +29,11 @@ export type Chat = {
 }
 
 export type Phone = {
-  ownerId: number,
+  ownerId: number
   number: string
+}
+
+export type Code = {
+  value: string
+  userId: number
 }

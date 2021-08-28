@@ -7,7 +7,7 @@ type State = {
   token: string
 }
 
-const initialState = {currentUser: {...nullUser, id: 5}, token: ''} as State
+const initialState = {currentUser: {...nullUser}, token: ''} as State
 
 const authorizationSlice = createSlice({
   name: 'chats',
@@ -19,5 +19,7 @@ const authorizationSlice = createSlice({
     }
   }
 })
+
+export const {authorize} = authorizationSlice.actions
 
 export const authorizationReducer = authorizationSlice.reducer

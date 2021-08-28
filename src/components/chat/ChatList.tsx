@@ -11,7 +11,7 @@ type Props = {
 }
 
 export const ChatList: FC<Props> = ({selectedChat, onChatSelected, chatsFiltration}: Props) => {
-  const chats = useAppSelector(state => state.chats.list)
+  const chats = useAppSelector(state => state.authorization.currentUser.chats)
   const dispatch = useAppDispatch()
 
   const makeChat = (chat: Chat) => {
