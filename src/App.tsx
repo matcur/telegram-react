@@ -9,7 +9,7 @@ import {Index} from "pages/Index";
 import {NewUserCodeVerification} from "pages/NewUserCodeVerification";
 import {RegisteredUserCodeVerification} from "pages/RegisteredUserCodeVerification";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>

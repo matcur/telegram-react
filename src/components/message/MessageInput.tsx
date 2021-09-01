@@ -31,7 +31,7 @@ export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
     setTextContent('')
   }
 
-  function seedForm(form: FormData, data: Form, content: Content[], files: FileList) {
+  const seedForm = (form: FormData, data: Form, content: Content[], files: FileList) => {
     form.append('content[0].type', 'Text')
     form.append('content[0].value', data.textContent)
     content.push({type: 'Text', value: data.textContent, displayOrder: 1000})
