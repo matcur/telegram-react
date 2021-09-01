@@ -2,6 +2,7 @@ import React, {FC, useState} from 'react'
 import {ChatSearch} from "./ChatSearch";
 import {ChatList} from "./ChatList";
 import {Chat} from "models";
+import {useFormInput} from "hooks/useFormInput";
 
 type Props = {
   onChatSelected: (chat: Chat) => void
@@ -9,15 +10,17 @@ type Props = {
 }
 
 export const ChatsBlock: FC<Props> = ({onChatSelected, selectedChat}: Props) => {
-  const [searchText, setSearchText] = useState('')
+  const search = useFormInput('')
   const chatsFiltration = (chat: Chat) => {
-    return searchText === '' || chat.name.includes(searchText)
+    const value = search.value;
+
+    return value === '' || chat.name.includes(value)
   }
 
   return (
     <div className="chats-block">
       <ChatSearch
-        setSearchText={setSearchText}/>
+        onChange={search.onChange}/>
       <ChatList
         chatsFiltration={chatsFiltration}
         selectedChat={selectedChat}

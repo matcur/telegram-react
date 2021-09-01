@@ -19,7 +19,7 @@ const Start = ({}: Props) => {
           Telegram Desktop
         </div>
         <div className="start-welcome">
-          <p>Welcome to the officical Telegram Desktopapp.</p>
+          <p>Welcome to the official Telegram Desktop app.</p>
           <p>It's fast and secure.</p>
         </div>
         <Link to="login" className="btn btn-primary start-messaging-btn">START MESSAGING</Link>

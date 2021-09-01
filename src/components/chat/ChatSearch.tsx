@@ -1,14 +1,10 @@
-import React, {FC, FormEvent} from 'react'
+import React, {FC} from 'react'
 
 type Props = {
-  setSearchText: (text: string) => void
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void
 }
 
-export const ChatSearch: FC<Props> = ({setSearchText}: Props) => {
-  const onInput = (event: FormEvent<HTMLInputElement>) => {
-    setSearchText(event.currentTarget.value)
-  }
-
+export const ChatSearch: FC<Props> = ({onChange}: Props) => {
   return (
     <div className="chats-search">
       <div className="burger index-burger">
@@ -20,7 +16,7 @@ export const ChatSearch: FC<Props> = ({setSearchText}: Props) => {
         type="text"
         className="clear-input chats-search-input"
         placeholder="Search"
-        onInput={onInput}/>
+        onInput={onChange}/>
     </div>
   )
 }
