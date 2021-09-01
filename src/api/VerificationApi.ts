@@ -15,6 +15,6 @@ export class VerificationApi {
   }
 
   async token(code: Code) {
-    return ''
+    return '123'
   }
 }

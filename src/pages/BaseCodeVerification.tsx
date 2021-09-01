@@ -22,8 +22,8 @@ export const BaseCodeVerification = ({title, phoneNumber}: Props) => {
 
   const toIndex = async (enteredCode: string) => {
     if (await codes.valid({value: enteredCode, phoneNumber})) {
-      history.push('/')
       await authentication(enteredCode, phoneNumber)
+      history.push('/')
 
       return
     }
