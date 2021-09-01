@@ -8,9 +8,10 @@ import {lastIn} from "utils/lastIn";
 
 type Props = {
   messages: Message[]
+  onMessageDoubleClick: (message: Message) => void
 }
 
-export const ChatMessages: FC<Props> = ({messages}: Props) => {
+export const ChatMessages: FC<Props> = ({messages, onMessageDoubleClick}: Props) => {
   const currentUser = useAppSelector(state => state.authorization.currentUser)
   const scrollBarRef = createRef<HTMLDivElement>()
 
@@ -20,6 +21,7 @@ export const ChatMessages: FC<Props> = ({messages}: Props) => {
       const next = i + 1 === messages.length? nullMessage: messages[i + 1]
 
       return <ChatMessage
+        onDoubleClick={onMessageDoubleClick}
         key={i}
         previousAuthor={previous.author}
         message={message}

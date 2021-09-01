@@ -4,6 +4,7 @@ import {nullChat} from "nullables";
 import {removeFrom} from "utils/removeFrom";
 import {RootState} from "app/store";
 import {maxId} from "utils/maxId";
+import {Writable} from "stream";
 
 type State = {
   list: Chat[]
@@ -28,6 +29,7 @@ const newMessage = (message: Omit<Message, 'id' | 'creationDate'>, messages: Mes
   return {...message, id: maxId(messages), creationDate: (new Date()).toDateString()}
 }
 
+// Todo ref this shit
 const chatsSlice = createSlice({
   name: 'chats',
   initialState,
@@ -35,19 +37,17 @@ const chatsSlice = createSlice({
     addChat(state, {payload}: PayloadAction<Chat>) {
       state.list.push(payload)
     },
-    addMessage(state, {payload}: PayloadAction<{chat: Chat, message: Omit<Message, 'id' | 'creationDate'>}>) {
-      const chat = state.list.find(c => c.id === payload.chat.id)
+    addMessage(state, {payload}: PayloadAction<{chatId: number, message: Omit<Message, 'id' | 'creationDate'>}>) {
+      const chat = state.list.find(c => c.id === payload.chatId)
 
       chat?.messages.push(newMessage(payload.message, chat.messages))
     },
-    addMessages(state, {payload}: PayloadAction<{chat: Chat, messages: Omit<Message, 'id' | 'creationDate'>[]}>) {
-      const chats = state.list
-      const index = chats.indexOf(payload.chat)
-      if (index === -1) {
+    addMessages(state, {payload}: PayloadAction<{chatId: number, messages: Omit<Message, 'id' | 'creationDate'>[]}>) {
+      const chat = state.list.find(c => c.id === payload.chatId)
+      if (chat === undefined) {
         return
       }
 
-      const chat = state.list[index]
       payload.messages.forEach(m => chat.messages.push(newMessage(m, chat.messages)))
     },
     addChatRange(state, {payload}: PayloadAction<Chat[]>) {
@@ -58,10 +58,19 @@ const chatsSlice = createSlice({
     remove(state, {payload}: PayloadAction<Chat>) {
       removeFrom(state.list, payload)
     },
+    updateMessage(state, {payload}: PayloadAction<{chatId: number, message: Message}>) {
+      const chat = state.list.find(c => c.id === payload.chatId)
+      if (chat === undefined) {
+        return
+      }
+
+      removeFrom(chat.messages, payload.message)
+      chat.messages.push(payload.message)
+    }
   }
 })
 
-export const { addChat, addChatRange, remove, addMessage, addMessages } = chatsSlice.actions
+export const { addChat, addChatRange, remove, addMessage, addMessages, updateMessage } = chatsSlice.actions
 
 export const chatsReducer = chatsSlice.reducer
 

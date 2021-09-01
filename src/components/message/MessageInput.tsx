@@ -1,4 +1,4 @@
-import React, {createRef, FC, useState} from 'react'
+import React, {createRef, FC} from 'react'
 import {ReactComponent as PaperClip} from 'public/svgs/paperclip.svg'
 import {ReactComponent as Command} from 'public/svgs/command.svg'
 import {ReactComponent as Smile} from 'public/svgs/smile.svg'
@@ -8,16 +8,15 @@ import {Content} from "models";
 
 type Props = {
   onSubmitting: (data: FormData, content: Content[]) => void
+  textInput: {value: string, onChange: (e: React.FormEvent<HTMLInputElement> | string) => void}
 }
 
 type Form = {
-  textContent: string
   files: FileList
 }
 
-export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
+export const MessageInput: FC<Props> = ({onSubmitting, textInput}: Props) => {
   const {register, handleSubmit} = useForm<Form>()
-  const [textContent, setTextContent] = useState('')
   const form = createRef<HTMLFormElement>()
 
   const onSubmit = (data: Form) => {
@@ -28,13 +27,13 @@ export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
     seedForm(form, data, content, files);
 
     onSubmitting(form, content)
-    setTextContent('')
+    textInput.onChange('')
   }
 
   const seedForm = (form: FormData, data: Form, content: Content[], files: FileList) => {
     form.append('content[0].type', 'Text')
-    form.append('content[0].value', data.textContent)
-    content.push({type: 'Text', value: data.textContent, displayOrder: 1000})
+    form.append('content[0].value', textInput.value)
+    content.push({type: 'Text', value: textInput.value, displayOrder: 1000})
     for (let i = 0; i < files.length; i++) {
       form.append(`content[${i + 1}].type`, 'Image')
       form.append(`content[${i + 1}].value`, files[i])
@@ -57,9 +56,7 @@ export const MessageInput: FC<Props> = ({onSubmitting}: Props) => {
         type="text"
         className="clear-input message-input"
         placeholder="Write a message..."
-        onInput={e => setTextContent(e.currentTarget.value)}
-        value={textContent}
-        {...register('textContent', {required: true, minLength: 1})}/>
+        {...textInput}/>
       <Command/>
       <Smile/>
       <Microphone/>

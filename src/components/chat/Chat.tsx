@@ -2,12 +2,16 @@ import React, {FC, useEffect, useState} from 'react'
 import {MessageInput} from "components/message/MessageInput";
 import {ChatMessages} from "components/chat/ChatMessages";
 import {useAppDispatch, useAppSelector} from "app/hooks";
-import {Chat as ChatModel, Content} from "models";
-import {addMessage, addMessages, chatMessages} from "app/slices/chatsSlice";
+import {Chat as ChatModel, Content, Message} from "models";
+import {addMessages, chatMessages} from "app/slices/chatsSlice";
 import {LoadingChat} from "./LoadingChat";
 import {nullMessage} from "nullables";
 import {ChatHeader} from "components/chat/ChatHeader";
-import {ChatApi} from "api/ChatApi";
+import {useFormInput} from "hooks/useFormInput";
+import {textContent} from "utils/textContent";
+import {NewMessageState} from "app/messageStates/NewMessageState";
+import {MessageState} from "app/messageStates/MessageState";
+import {EditingMessageState} from "app/messageStates/EditingMessageState";
 
 type Props = {
   chat: ChatModel
@@ -17,17 +21,19 @@ export const Chat: FC<Props> = ({chat}: Props) => {
   const messages = useAppSelector(state => chatMessages(state, chat.id))
   const currentUser = useAppSelector(state => state.authorization.currentUser)
   const dispatch = useAppDispatch()
+  const input = useFormInput()
+  const newMessageState = new NewMessageState(dispatch, chat.id, currentUser)
+  const [inputState, setInputState] = useState<MessageState>(newMessageState)
   const [loaded, setLoaded] = useState(false)
 
-  const submitMessage = (data: FormData) => {
-    (new ChatApi(chat.id)).addMessage(data)
-  }
-  const addMessageToStore = (content: Content[]) => {
-    dispatch(addMessage({chat, message: {content, author: currentUser, chatId: chat.id}}))
-  }
   const onSubmit = (data: FormData, content: Content[]) => {
-    addMessageToStore(content)
-    submitMessage(data)
+    inputState.submit(data, content)
+  }
+  const editMessage = (message: Message) => {
+    input.onChange(textContent(message))
+    setInputState(
+      new EditingMessageState(message, setInputState, dispatch, newMessageState)
+    )
   }
 
   useEffect(() => {
@@ -38,7 +44,7 @@ export const Chat: FC<Props> = ({chat}: Props) => {
 
     async function load() {
       await setTimeout(() => {
-        dispatch(addMessages({chat, messages: [nullMessage, nullMessage]}))
+        dispatch(addMessages({chatId: chat.id, messages: [nullMessage, nullMessage]}))
         setLoaded(true)
       }, 1000)
     }
@@ -51,8 +57,12 @@ export const Chat: FC<Props> = ({chat}: Props) => {
       <ChatHeader chat={chat}/>
       {
         loaded? (<>
-          <ChatMessages messages={messages}/>
-          <MessageInput onSubmitting={onSubmit}/>
+          <ChatMessages
+            onMessageDoubleClick={editMessage}
+            messages={messages}/>
+          <MessageInput
+            textInput={input}
+            onSubmitting={onSubmit}/>
         </>)
         : <LoadingChat/>
       }
