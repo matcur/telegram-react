@@ -36,8 +36,8 @@ export const BaseCodeVerification = ({title, phoneNumber}: Props) => {
   }
 
   return (
-    <div className="page code-verification">
-      <div className="navigation">
+    <div className="page code-verification-page">
+      <div className="navigation qr-code-navigation">
         <LeftArrowIcon/>
         <a className="settings-link navigation-link">SETTINGS</a>
       </div>

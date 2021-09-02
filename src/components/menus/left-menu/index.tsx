@@ -7,23 +7,24 @@ import {ReactComponent as PhoneIcon} from "public/svgs/phone.svg";
 import {ReactComponent as PersonIcon} from "public/svgs/person.svg";
 import {ReactComponent as GearIcon} from "public/svgs/gear.svg";
 import {ReactComponent as MoonIcon} from "public/svgs/moon.svg";
+import {Toggler} from "components/form/Toggler";
 
 type Props = {
-
+  visible: boolean
 }
 
-export const LeftMenu = (props: Props) => {
+export const LeftMenu = ({visible}: Props) => {
   const items: Item[] = [
     {name: 'New Group', icon: <PeopleIcon/>},
     {name: 'New Channel', icon: <SpeakerIcon/>},
     {name: 'Contacts', icon: <PersonIcon/>},
     {name: 'Calls', icon: <PhoneIcon/>},
     {name: 'Settings', icon: <GearIcon/>},
-    {name: 'Night Mode', icon: <MoonIcon/>, additionalElement: <GearIcon/>},
+    {name: 'Night Mode', icon: <MoonIcon/>, additionalElement: <Toggler/>},
   ]
 
   return (
-    <div className="left-menu">
+    <div className={'left-menu' + (visible? ' show-left-menu': '')}>
       <LeftMenuUserInfo/>
       <div className="left-menu-options">
         {items.map((i, key) => <LeftMenuItem key={key} item={i}/>)}

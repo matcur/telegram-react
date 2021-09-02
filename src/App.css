@@ -343,7 +343,8 @@ a {
     color: #6A9D9B;
 }
 
-.login-page {
+.login-page,
+.code-verification-page {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -786,10 +787,14 @@ a {
 
 .up-layer {
     position: absolute;
-    z-index: -1000;
     height: 100vh;
     width: 100vw;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0);
+}
+
+.show-up-layer {
+    background: rgba(0, 0, 0, .3);
+    transition: background .3s;
 }
 
 .saved-messages-icon {
@@ -798,6 +803,7 @@ a {
 }
 
 .left-menu {
+    z-index: 1000;
     position: absolute;
     left: -100%;
     display: -webkit-box;
@@ -859,7 +865,7 @@ a {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 15px 25px;
+    padding: 12px 25px;
     cursor: pointer;
 }
 
@@ -882,7 +888,7 @@ a {
 }
 
 .option-icon {
-    width: 25px;
+    width: 20px;
 }
 
 .option-icon path {
@@ -902,7 +908,7 @@ a {
     justify-content: center;
     height: 30px;
     width: 30px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0);
     cursor: pointer;
 }
 
@@ -917,7 +923,7 @@ a {
 }
 
 .small-toggler {
-    width: 30px;
+    width: 25px;
     height: 15px;
     border-radius: 8px;
 }
@@ -965,10 +971,6 @@ input {
 input:checked + .fuck:before {
     position: absolute;
     content: "1232";
-}
-
-.show-up-layer {
-    z-index: 1000;
 }
 
 .show-left-menu {
