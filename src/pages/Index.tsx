@@ -16,15 +16,17 @@ export const Index = (props: Props) => {
   const [selectedChat, setSelectedChat] = useState(nullChat)
   const [upLayerVisible, setUpLayerVisible] = useState(false)
   const [leftMenuVisible, setLeftMenuVisible] = useState(false)
+  const [centralElement, setCentralElement] = useState(<div/>)
   useRequireAuthentication('/registered-user-code-verification?number=89545672654')
 
   return (
-    <UpLayerContext.Provider value={{setVisible: setUpLayerVisible}}>
+    <UpLayerContext.Provider value={{setVisible: setUpLayerVisible, setCentralElement}}>
       <LeftMenuContext.Provider value={{setVisible: setLeftMenuVisible}}>
         <div className="index">
           <UpLayer
             visible={upLayerVisible}
             leftElement={<LeftMenu visible={leftMenuVisible}/>}
+            centerElement={centralElement}
             onClick={() => {
               setLeftMenuVisible(false)
               setUpLayerVisible(false)

@@ -8,6 +8,7 @@ export type Item = {
   name: string
   icon: ReactElement
   additionalElement?: ReactElement
+  onClick?: () => void
 }
 
 export const LeftMenuItem: FC<Props> = ({item}: Props) => {
