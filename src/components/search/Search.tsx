@@ -7,7 +7,7 @@ type Props = {
 }
 
 // Todo rename to search
-export const ChatSearch: FC<Props> = ({icon = <div/>, className = '', onChange}: Props) => {
+export const Search: FC<Props> = ({icon = <div/>, className = '', onChange}: Props) => {
   return (
     <div className={`chats-search ${className}`}>
       {icon}

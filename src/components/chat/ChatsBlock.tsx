@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react'
-import {ChatSearch} from "./ChatSearch";
+import {Search} from "components/search/Search";
 import {ChatList} from "./ChatList";
 import {Chat} from "models";
 import {useFormInput} from "hooks/useFormInput";
@@ -26,7 +26,7 @@ export const ChatsBlock: FC<Props> = ({onChatSelected, selectedChat}: Props) => 
 
   return (
     <div className="chats-block">
-      <ChatSearch
+      <Search
         onChange={search.onChange}
         icon={<Burger onClick={onBurgerClick}/>}/>
       <ChatList

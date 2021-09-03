@@ -1,6 +1,6 @@
 import React, {FC, useContext} from 'react'
 import {useAppDispatch, useAppSelector} from "app/hooks";
-import {ChatSearch} from "components/chat/ChatSearch";
+import {Search} from "components/search/Search";
 import {useFormInput} from "hooks/useFormInput";
 import {ShortUserInfo} from "components/user/ShortUserInfo";
 import {FormButton} from "form/FormButton";
@@ -54,7 +54,7 @@ export const AddMembersForm: FC<Props> = ({chatName}) => {
       <div className="add-members-form-header">
         <span className="form-title add-members-title">Add Members</span>
         <span className="invite-friend-count">{selectedFriends.value.length + 1} / 20000</span>
-        <ChatSearch
+        <Search
           className="add-member-search"
           onChange={search.onChange}/>
       </div>
