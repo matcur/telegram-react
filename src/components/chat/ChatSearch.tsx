@@ -1,13 +1,14 @@
 import React, {FC, useContext} from 'react'
 import {UpLayerContext} from "contexts/UpLayerContext";
 import {LeftMenuContext} from "contexts/LeftMenuContext";
+import {Burger} from "components/icons/Burger";
 
 type Props = {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void
   className?: string
 }
 
-// Todo rename to search and extract burger
+// Todo rename to search
 export const ChatSearch: FC<Props> = ({className = '', onChange}: Props) => {
   const upLayerContext = useContext(UpLayerContext)
   const leftMenuContext = useContext(LeftMenuContext)
@@ -19,13 +20,7 @@ export const ChatSearch: FC<Props> = ({className = '', onChange}: Props) => {
 
   return (
     <div className={`chats-search ${className}`}>
-      <div
-        className="burger index-burger"
-        onClick={onBurgerClick}>
-        <div className="burger-line"/>
-        <div className="burger-line"/>
-        <div className="burger-line"/>
-      </div>
+      <Burger onClick={onBurgerClick}/>
       <input
         type="text"
         className="clear-input chats-search-input"
