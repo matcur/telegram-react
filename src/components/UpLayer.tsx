@@ -1,4 +1,5 @@
-import React, {ReactElement} from 'react'
+import React, {ReactElement, useContext} from 'react'
+import {UpLayerContext} from "contexts/UpLayerContext";
 
 type Props = {
   visible: boolean
@@ -8,6 +9,8 @@ type Props = {
 }
 
 export const UpLayer = ({leftElement, centerElement, onClick, visible}: Props) => {
+  const context = useContext(UpLayerContext)
+
   return (
     <div
       className={'up-layer' + (visible? ' show-up-layer': '')}

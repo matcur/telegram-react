@@ -19,6 +19,12 @@ export const Index = (props: Props) => {
   const [centralElement, setCentralElement] = useState(<div/>)
   useRequireAuthentication('/registered-user-code-verification?number=89545672654')
 
+  const hideUpLayer = () => {
+    setLeftMenuVisible(false)
+    setUpLayerVisible(false)
+    setCentralElement(<div/>)
+  }
+
   return (
     <UpLayerContext.Provider value={{setVisible: setUpLayerVisible, setCentralElement}}>
       <LeftMenuContext.Provider value={{setVisible: setLeftMenuVisible}}>
@@ -27,10 +33,7 @@ export const Index = (props: Props) => {
             visible={upLayerVisible}
             leftElement={<LeftMenu visible={leftMenuVisible}/>}
             centerElement={centralElement}
-            onClick={() => {
-              setLeftMenuVisible(false)
-              setUpLayerVisible(false)
-            }}/>
+            onClick={hideUpLayer}/>
           <ChatsBlock
             selectedChat={selectedChat}
             onChatSelected={setSelectedChat}/>

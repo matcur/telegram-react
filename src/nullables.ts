@@ -1,4 +1,4 @@
-import {Chat, Message, User} from "./models";
+import {Chat, Message, User} from "models";
 
 export const nullUser: User = {
   id: -1,
@@ -6,6 +6,7 @@ export const nullUser: User = {
   lastName: '',
   chats: [],
   avatarUrl: '',
+  friends: []
 }
 
 export const nullMessage: Message = {

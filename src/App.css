@@ -149,7 +149,7 @@ body {
 .input-line::after {
     left: 50%;
     height: 2px;
-    width: 0px;
+    width: 0;
     background: #6396CB;
     -webkit-transition: .2s;
     transition: .2s;
@@ -158,10 +158,6 @@ body {
 .form-input:focus + .input-line:after {
     left: 0;
     width: 100%;
-}
-
-.form-title {
-    font-size: 20px;
 }
 
 .burger {
@@ -786,6 +782,9 @@ a {
 }
 
 .up-layer {
+    display: flex;
+    justify-content: center;
+    z-index: -100;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -793,6 +792,7 @@ a {
 }
 
 .show-up-layer {
+    z-index: 100;
     background: rgba(0, 0, 0, .3);
     transition: background .3s;
 }
@@ -1001,5 +1001,139 @@ input:checked + .fuck:before {
     font-size: 12px;
     color: #727E8A;
     text-align: center;
+}
+
+.form-btn {
+    padding: 8px;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #6396CB;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.form-btn:hover {
+    background: #1D2A39;
+}
+
+.form {
+    position: absolute;
+    padding: 10px 20px 15px 20px;
+    margin: auto;
+    background: #17212B;
+    border-radius: 3px;
+}
+
+.form-title {
+    font-size: 18px;
+}
+
+.center-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.file-input {
+    display: none;
+}
+
+.text-input {
+    width: 100%;
+}
+
+.label {
+    font-size: 15px;
+    color: #6396CB;
+}
+
+.new-group-form {
+    width: 330px;
+    padding-top: 20px;
+}
+
+.image-input-wrapper {
+    margin-right: 30px;
+}
+
+.image-input {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.add-members-form {
+    width: 320px;
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.add-members-title {
+    padding-left: 25px;
+}
+
+.invite-friend-count {
+    font-size: 13px;
+    color: #727E8A;
+    margin-left: 15px;
+}
+
+.small-user-avatar {
+    height: 40px;
+    width: 40px;
+}
+
+.short-user-info-wrapper:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.short-user-info-wrapper {
+    display: flex;
+}
+
+.friends {
+    min-height: 250px;
+    max-height: 350px;
+    overflow-x: scroll;
+    margin-top: 5px;
+    border-bottom: 1px solid #0e1621;
+    border-top: 1px solid #0e1621;
+}
+
+.short-user-info-wrapper {
+    padding: 4px 20px;
+    cursor: pointer;
+}
+
+.short-user-info {
+    margin-left: 10px;
+}
+
+.add-members-buttons {
+    margin-right: 15px;
+}
+
+.friend-info .user-avatar {
+    border: 2px solid transparent;
+}
+
+.selected-friend .user-avatar {
+    border: 2px solid #2F6EA5;
+}
+
+.invalid-group .label {
+    color: #fa2323;
+}
+.invalid-group .input-line::after {
+    background: #fa2323;
 }
 /*# sourceMappingURL=style.css.map */

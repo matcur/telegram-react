@@ -11,6 +11,7 @@ type Props = {
 }
 
 export const ChatList: FC<Props> = ({selectedChat, onChatSelected, chatsFiltration}: Props) => {
+  // Todo move to chats block
   const chats = useAppSelector(state => state.authorization.currentUser.chats)
   const dispatch = useAppDispatch()
 

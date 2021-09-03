@@ -11,7 +11,7 @@ type Props = {
 
 export const ChatsBlock: FC<Props> = ({onChatSelected, selectedChat}: Props) => {
   const search = useFormInput('')
-  const chatsFiltration = (chat: Chat) => {
+  const filtration = (chat: Chat) => {
     const value = search.value;
 
     return value === '' || chat.name.includes(value)
@@ -22,7 +22,7 @@ export const ChatsBlock: FC<Props> = ({onChatSelected, selectedChat}: Props) => 
       <ChatSearch
         onChange={search.onChange}/>
       <ChatList
-        chatsFiltration={chatsFiltration}
+        chatsFiltration={filtration}
         selectedChat={selectedChat}
         onChatSelected={onChatSelected}/>
     </div>

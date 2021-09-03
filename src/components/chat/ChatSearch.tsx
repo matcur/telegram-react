@@ -4,9 +4,11 @@ import {LeftMenuContext} from "contexts/LeftMenuContext";
 
 type Props = {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void
+  className?: string
 }
 
-export const ChatSearch: FC<Props> = ({onChange}: Props) => {
+// Todo rename to search and extract burger
+export const ChatSearch: FC<Props> = ({className = '', onChange}: Props) => {
   const upLayerContext = useContext(UpLayerContext)
   const leftMenuContext = useContext(LeftMenuContext)
 
@@ -16,7 +18,7 @@ export const ChatSearch: FC<Props> = ({onChange}: Props) => {
   }
 
   return (
-    <div className="chats-search">
+    <div className={`chats-search ${className}`}>
       <div
         className="burger index-burger"
         onClick={onBurgerClick}>

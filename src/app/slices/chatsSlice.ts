@@ -34,9 +34,6 @@ const chatsSlice = createSlice({
   name: 'chats',
   initialState,
   reducers: {
-    addChat(state, {payload}: PayloadAction<Chat>) {
-      state.list.push(payload)
-    },
     addMessage(state, {payload}: PayloadAction<{chatId: number, message: Omit<Message, 'id' | 'creationDate'>}>) {
       const chat = state.list.find(c => c.id === payload.chatId)
 
@@ -70,7 +67,7 @@ const chatsSlice = createSlice({
   }
 })
 
-export const { addChat, addChatRange, remove, addMessage, addMessages, updateMessage } = chatsSlice.actions
+export const { addChatRange, remove, addMessage, addMessages, updateMessage } = chatsSlice.actions
 
 export const chatsReducer = chatsSlice.reducer
 

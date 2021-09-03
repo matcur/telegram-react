@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {User} from "models";
+import {Chat, User} from "models";
 import {nullUser} from "nullables";
 
 type State = {
@@ -16,10 +16,13 @@ const authorizationSlice = createSlice({
     authorize(state, {payload}: PayloadAction<State>) {
       state.currentUser = payload.currentUser
       state.token = payload.token
-    }
+    },
+    addChat(state, {payload}: PayloadAction<Chat>) {
+      state.currentUser.chats.push(payload)
+    },
   }
 })
 
-export const {authorize} = authorizationSlice.actions
+export const {authorize, addChat} = authorizationSlice.actions
 
 export const authorizationReducer = authorizationSlice.reducer

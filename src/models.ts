@@ -5,6 +5,7 @@ export type User = {
   chats: Chat[]
   avatarUrl: string
   phone?: Phone
+  friends?: User[]
 }
 
 export type Content = {

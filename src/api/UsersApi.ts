@@ -11,7 +11,23 @@ export class UsersApi {
       firstName: 'Jin',
       lastName: 'Lin',
       avatarUrl: '',
-      chats: initialState.list
+      chats: initialState.list,
+      friends: [
+        {
+          id: 6,
+          firstName: 'Lin',
+          lastName: 'Sing',
+          avatarUrl: '',
+          chats: initialState.list,
+        },
+        {
+          id: 7,
+          firstName: 'William',
+          lastName: 'Singer',
+          avatarUrl: '',
+          chats: initialState.list,
+        },
+      ],
     }
   }
 }
