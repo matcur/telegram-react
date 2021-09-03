@@ -1,23 +1,16 @@
-import React, {FC} from 'react'
-import {Burger} from "components/icons/Burger";
-import {useSetLeftMenuVisible} from "hooks/useSetLeftMenuVisible";
+import React, {FC, ReactElement} from 'react'
 
 type Props = {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void
+  icon?: ReactElement
   className?: string
 }
 
 // Todo rename to search
-export const ChatSearch: FC<Props> = ({className = '', onChange}: Props) => {
-  const setLeftMenuVisible = useSetLeftMenuVisible()
-
-  const onBurgerClick = () => {
-    setLeftMenuVisible(true)
-  }
-
+export const ChatSearch: FC<Props> = ({icon = <div/>, className = '', onChange}: Props) => {
   return (
     <div className={`chats-search ${className}`}>
-      <Burger onClick={onBurgerClick}/>
+      {icon}
       <input
         type="text"
         className="clear-input chats-search-input"

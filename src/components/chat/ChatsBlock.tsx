@@ -3,6 +3,8 @@ import {ChatSearch} from "./ChatSearch";
 import {ChatList} from "./ChatList";
 import {Chat} from "models";
 import {useFormInput} from "hooks/useFormInput";
+import {useSetLeftMenuVisible} from "hooks/useSetLeftMenuVisible";
+import {Burger} from "components/icons/Burger";
 
 type Props = {
   onChatSelected: (chat: Chat) => void
@@ -11,6 +13,11 @@ type Props = {
 
 export const ChatsBlock: FC<Props> = ({onChatSelected, selectedChat}: Props) => {
   const search = useFormInput('')
+  const setLeftMenuVisible = useSetLeftMenuVisible()
+
+  const onBurgerClick = () => {
+    setLeftMenuVisible(true)
+  }
   const filtration = (chat: Chat) => {
     const value = search.value;
 
@@ -20,7 +27,8 @@ export const ChatsBlock: FC<Props> = ({onChatSelected, selectedChat}: Props) => 
   return (
     <div className="chats-block">
       <ChatSearch
-        onChange={search.onChange}/>
+        onChange={search.onChange}
+        icon={<Burger onClick={onBurgerClick}/>}/>
       <ChatList
         chatsFiltration={filtration}
         selectedChat={selectedChat}
