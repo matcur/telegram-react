@@ -1,7 +1,6 @@
-import React, {FC, useContext} from 'react'
-import {UpLayerContext} from "contexts/UpLayerContext";
-import {LeftMenuContext} from "contexts/LeftMenuContext";
+import React, {FC} from 'react'
 import {Burger} from "components/icons/Burger";
+import {useSetLeftMenuVisible} from "hooks/useSetLeftMenuVisible";
 
 type Props = {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void
@@ -10,12 +9,10 @@ type Props = {
 
 // Todo rename to search
 export const ChatSearch: FC<Props> = ({className = '', onChange}: Props) => {
-  const upLayerContext = useContext(UpLayerContext)
-  const leftMenuContext = useContext(LeftMenuContext)
+  const setLeftMenuVisible = useSetLeftMenuVisible()
 
   const onBurgerClick = () => {
-    upLayerContext.setVisible(true)
-    leftMenuContext.setVisible(true)
+    setLeftMenuVisible(true)
   }
 
   return (
