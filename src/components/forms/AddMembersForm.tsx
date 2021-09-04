@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from "app/hooks";
 import {Search} from "components/search/Search";
 import {useFormInput} from "hooks/useFormInput";
 import {ShortUserInfo} from "components/user/ShortUserInfo";
-import {FormButton} from "form/FormButton";
+import {FormButton} from "components/form/FormButton";
 import {like} from "utils/like";
 import {User} from "models";
 import {useArray} from "hooks/useArray";

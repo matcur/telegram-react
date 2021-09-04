@@ -1,10 +1,10 @@
 import React, {FC, useContext, useEffect, useState} from 'react'
-import {FormButton} from "form/FormButton";
-import {ImageInput} from "form/ImageInput";
-import {TextInput} from "form/TextInput";
+import {FormButton} from "components/form/FormButton";
+import {ImageInput} from "components/form/ImageInput";
+import {TextInput} from "components/form/TextInput";
 import {InputEvent, useFormInput} from "hooks/useFormInput";
 import {UpLayerContext} from "contexts/UpLayerContext";
-import {AddMembersForm} from "forms/AddMembersForm";
+import {AddMembersForm} from "components/forms/AddMembersForm";
 
 type Props = {
 

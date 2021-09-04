@@ -8,7 +8,7 @@ import {ReactComponent as PersonIcon} from "public/svgs/person.svg";
 import {ReactComponent as GearIcon} from "public/svgs/gear.svg";
 import {ReactComponent as MoonIcon} from "public/svgs/moon.svg";
 import {Toggler} from "components/form/Toggler";
-import {NewGroupForm} from "forms/NewGroupForm";
+import {NewGroupForm} from "components/forms/NewGroupForm";
 import {UpLayerContext} from "contexts/UpLayerContext";
 import {LeftMenuContext} from "contexts/LeftMenuContext";
 
