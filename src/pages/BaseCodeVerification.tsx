@@ -10,19 +10,21 @@ import {useFormInput} from "hooks/useFormInput";
 type Props = {
   title: ReactElement
   phoneNumber: string
+  userId: number
 }
 
-export const BaseCodeVerification = ({title, phoneNumber}: Props) => {
+export const BaseCodeVerification = ({title, phoneNumber, userId}: Props) => {
   const history = useHistory()
-  const authentication = useAuthentication(new UsersApi(), new VerificationApi())
-  const code = useFormInput('123456')
+  const authenticate = useAuthentication(new UsersApi(), new VerificationApi())
+  const code = useFormInput('383476')
   const [wrongCodeMessage, setWrongMessage] = useState('')
 
   const codes = new CodesApi()
 
   const toIndex = async (enteredCode: string) => {
-    if (await codes.valid({value: enteredCode, phoneNumber})) {
-      await authentication(enteredCode, phoneNumber)
+    const response = await codes.valid({value: enteredCode, userId})
+    if (response.result) {
+      await authenticate(phoneNumber, enteredCode)
       history.push('/')
 
       return

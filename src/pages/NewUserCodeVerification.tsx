@@ -1,10 +1,9 @@
-import React, {FC, useEffect} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import {BaseCodeVerification} from "pages/BaseCodeVerification";
 import {useParams} from "react-router";
 import {VerificationApi} from "api/VerificationApi";
 import {useQueryParams} from "hooks/useQueryParams";
 import {RegistrationApi} from "api/RegistrationApi";
-import {useDispatch} from "react-redux";
 
 type Props = {
 
@@ -12,6 +11,7 @@ type Props = {
 
 export const NewUserCodeVerification: FC<Props> = ({}: Props) => {
   const query = useQueryParams()
+  const [userId, setUserId] = useState(-1)
 
   const number = query.get('number') ?? ''
   const title = <span>
@@ -21,7 +21,8 @@ export const NewUserCodeVerification: FC<Props> = ({}: Props) => {
 
   useEffect(() => {
     async function load() {
-      await (new RegistrationApi().register({number}))
+      const user = (await (new RegistrationApi().register({number}))).result
+      setUserId(user.id)
 
       new VerificationApi().byPhone(number)
     }
@@ -32,6 +33,7 @@ export const NewUserCodeVerification: FC<Props> = ({}: Props) => {
   return (
     <BaseCodeVerification
       title={title}
-      phoneNumber={number}/>
+      phoneNumber={number}
+      userId={userId}/>
   )
 }

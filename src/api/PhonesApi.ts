@@ -9,7 +9,6 @@ export class PhonesApi {
   }
 
   async find(number: string): Promise<{success: boolean, result: Phone}> {
-    // return await this.api.get(`phones/${number}`)
-    return {success: true, result: {number, ownerId: 5}}
+    return await this.api.get(`phones/${number}`)
   }
 }

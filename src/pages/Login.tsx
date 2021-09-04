@@ -11,14 +11,15 @@ type Props = {
 
 export const Login = (props: Props) => {
   const history = useHistory()
-  const phone = useFormInput('89545672654')
+  const phone = useFormInput('89519370404')
   const [invalidPhoneMessage, setInvalidPhoneMessage] = useState('')
 
   const toVerification = async () => {
     if (isValidPhone(phone.value)) {
       const response = await new PhonesApi().find(phone.value)
       if (response.success) {
-        history.push(`/registered-user-code-verification?number=${response.result.number}`)
+        const result = response.result
+        history.push(`/registered-user-code-verification?number=${result.number}&userId=${result.ownerId}`)
       } else {
         history.push(`/new-user-code-verification?number=${phone.value}`)
       }

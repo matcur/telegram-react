@@ -12,7 +12,7 @@ export class ApiClient {
 
   async post<TResult>(resource: string, body: FormData | any = {}) {
     if (body instanceof FormData) {
-      return await this.sendXmlHttpRequest<TResult>(
+      return await this.sendXmlHttpRequest<{success: boolean, result: TResult}>(
         resource, body, 'POST'
       )
     }
@@ -23,12 +23,7 @@ export class ApiClient {
         'Accept': 'application/json',
       },
       body: JSON.stringify(body),
-      mode: 'cors',
-    }).then(res => res.json() as Promise<TResult>)
-      .catch(err => {
-        console.log('fucking', err.messages)
-        return {success: true, result: false}
-      })
+    }).then(res => res.json() as Promise<{success: boolean, result: TResult}>)
   }
 
   async sendXmlHttpRequest<TResult>(resource: string, data: FormData, method: string) {

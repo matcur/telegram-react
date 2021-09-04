@@ -12,6 +12,7 @@ export const RegisteredUserCodeVerification: FC<Props> = ({}: Props) => {
   const query = useQueryParams()
 
   const number = query.get('number') ?? ''
+  const userId = query.get('userId') ?? ''
   const title = <span>
     A code was sent <strong>via Telegram</strong> to your other<br/>
     devices, if you have any connected.
@@ -24,6 +25,7 @@ export const RegisteredUserCodeVerification: FC<Props> = ({}: Props) => {
   return (
     <BaseCodeVerification
       title={title}
-      phoneNumber={number}/>
+      phoneNumber={number}
+      userId={parseInt(userId)}/>
   )
 }

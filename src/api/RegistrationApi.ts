@@ -1,11 +1,10 @@
 import {ApiClient} from "api/ApiClient";
-import {Phone, User} from "models";
+import {User} from "models";
 
 export class RegistrationApi {
   api = new ApiClient()
 
-  async register(phone: {number: string}) {
-    // return this.api.post('user/register', user)
-    return 12
+  async register(phone: {number: string}): Promise<{success: boolean; result: User}> {
+    return await this.api.post(`user/register?firstName=&lastName=&phoneNumber=${phone.number}`)
   }
 }
