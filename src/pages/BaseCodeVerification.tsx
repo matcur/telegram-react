@@ -17,7 +17,7 @@ type Props = {
 export const BaseCodeVerification = ({title, phoneNumber, userId}: Props) => {
   const history = useHistory()
   const authenticate = useAuthentication(new UsersApi(), new VerificationApi())
-  const code = useFormInput('383476')
+  const code = useFormInput('')
   const [wrongCodeMessage, setWrongMessage] = useState('')
 
   const codes = new CodesApi()
