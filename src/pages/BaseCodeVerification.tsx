@@ -33,6 +33,7 @@ export const BaseCodeVerification = ({title, phoneNumber, userId}: Props) => {
 
     setWrongMessage('Wrong code, try again.')
   }
+  const toLogin = () => history.push(`/login?phoneNumber=${phoneNumber}`)
   const onCodeInput = (e: React.FormEvent<HTMLInputElement>) => {
     code.onChange(e)
     setWrongMessage('')
@@ -40,7 +41,7 @@ export const BaseCodeVerification = ({title, phoneNumber, userId}: Props) => {
 
   return (
     <div className="page code-verification-page">
-      <PageNavigation/>
+      <PageNavigation onBackClick={toLogin}/>
       <form className="login-form">
         <div className="form-title">{phoneNumber}</div>
         <p className="phone-caption">

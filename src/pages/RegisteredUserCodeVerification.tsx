@@ -11,7 +11,7 @@ type Props = {
 export const RegisteredUserCodeVerification: FC<Props> = ({}: Props) => {
   const query = useQueryParams()
 
-  const number = query.get('number') ?? ''
+  const phoneNumber = query.get('phoneNumber') ?? ''
   const userId = query.get('userId') ?? ''
   const title = <span>
     A code was sent <strong>via Telegram</strong> to your other<br/>
@@ -19,13 +19,13 @@ export const RegisteredUserCodeVerification: FC<Props> = ({}: Props) => {
   </span>
 
   useEffect(() => {
-    new VerificationApi().fromTelegram({number})
+    new VerificationApi().fromTelegram({number: phoneNumber})
   }, [])
 
   return (
     <BaseCodeVerification
       title={title}
-      phoneNumber={number}
+      phoneNumber={phoneNumber}
       userId={parseInt(userId)}/>
   )
 }

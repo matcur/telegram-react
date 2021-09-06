@@ -20,14 +20,15 @@ export const Login = (props: Props) => {
       const response = await new PhonesApi().find(phone.value)
       if (response.success) {
         const result = response.result
-        history.push(`/registered-user-code-verification?number=${result.number}&userId=${result.ownerId}`)
+        history.push(`/registered-user-code-verification?phoneNumber=${result.number}&userId=${result.ownerId}`)
       } else {
-        history.push(`/new-user-code-verification?number=${phone.value}`)
+        history.push(`/new-user-code-verification?phoneNumber=${phone.value}`)
       }
     } else {
       setInvalidPhoneMessage('Invalid phone number. Try again.')
     }
   }
+  const toStart = () => history.push('/start')
   const onPhoneInput = (e: React.FormEvent<HTMLInputElement>) => {
     phone.onChange(e)
     setInvalidPhoneMessage('')
@@ -35,7 +36,7 @@ export const Login = (props: Props) => {
 
   return (
     <div className="page login-page">
-      <PageNavigation/>
+      <PageNavigation onBackClick={toStart}/>
       <form className="login-form" onSubmit={toVerification}>
         <div className="form-title">Your Phone Number</div>
         <p className="phone-caption">

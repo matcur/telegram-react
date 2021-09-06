@@ -13,7 +13,7 @@ export const NewUserCodeVerification: FC<Props> = ({}: Props) => {
   const query = useQueryParams()
   const [userId, setUserId] = useState(-1)
 
-  const number = query.get('number') ?? ''
+  const phoneNumber = query.get('phoneNumber') ?? ''
   const title = <span>
     A code was sent <strong>via Phone</strong> to your other<br/>
     devices, if you have any connected.
@@ -21,10 +21,10 @@ export const NewUserCodeVerification: FC<Props> = ({}: Props) => {
 
   useEffect(() => {
     async function load() {
-      const user = (await (new RegistrationApi().register({number}))).result
+      const user = (await (new RegistrationApi().register({number: phoneNumber}))).result
       setUserId(user.id)
 
-      new VerificationApi().byPhone(number)
+      new VerificationApi().byPhone(phoneNumber)
     }
 
     load()
@@ -33,7 +33,7 @@ export const NewUserCodeVerification: FC<Props> = ({}: Props) => {
   return (
     <BaseCodeVerification
       title={title}
-      phoneNumber={number}
+      phoneNumber={phoneNumber}
       userId={userId}/>
   )
 }
