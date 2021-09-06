@@ -6,6 +6,7 @@ import {CodesApi} from "api/CodesApi";
 import {UsersApi} from "api/UsersApi";
 import {useAuthentication} from "hooks/useAuthentication";
 import {useFormInput} from "hooks/useFormInput";
+import {PageNavigation} from "pages/partials/PageNavigation";
 
 type Props = {
   title: ReactElement
@@ -39,10 +40,7 @@ export const BaseCodeVerification = ({title, phoneNumber, userId}: Props) => {
 
   return (
     <div className="page code-verification-page">
-      <div className="navigation qr-code-navigation">
-        <LeftArrowIcon/>
-        <a className="settings-link navigation-link">SETTINGS</a>
-      </div>
+      <PageNavigation/>
       <form className="login-form">
         <div className="form-title">{phoneNumber}</div>
         <p className="phone-caption">

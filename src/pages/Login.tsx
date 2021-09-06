@@ -4,6 +4,7 @@ import {useHistory} from "react-router";
 import {isValidPhone} from "utils/isValidPhone";
 import {PhonesApi} from "api/PhonesApi";
 import {useFormInput} from "hooks/useFormInput";
+import {PageNavigation} from "pages/partials/PageNavigation";
 
 type Props = {
 
@@ -34,10 +35,7 @@ export const Login = (props: Props) => {
 
   return (
     <div className="page login-page">
-      <div className="navigation qr-code-navigation">
-        <LeftArrowIcon/>
-        <a className="settings-link navigation-link">SETTINGS</a>
-      </div>
+      <PageNavigation/>
       <form className="login-form" onSubmit={toVerification}>
         <div className="form-title">Your Phone Number</div>
         <p className="phone-caption">
